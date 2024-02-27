@@ -1,10 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import viteLogo from '/vite.svg';
+import './App.css';
+import APIForm from './components/APIForm';
+
+const ACCESS_KEY = import.meta.env.VITE_APP_ACCESS_KEY;
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+  const [inputs, setInputs] = useState({
+    url: "",
+    format: "",
+    no_ads: "",
+    no_cookie_banners: "",
+    width: "",
+    height: "",
+  });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setInputs((prevInputs) => ({
+      ...prevInputs,
+      [name]: value,
+    }));
+  };
+
+  const submitForm = () => {
+    let defaultValues = {
+      format: "jpeg",
+      no_ads: "true",
+      no_cookie_banners: "true",
+      width: "1920",
+      height: "1080",
+    };
+  
+  }
 
   return (
     <>
@@ -12,9 +41,10 @@ function App() {
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
-        <a href="https://react.dev" target="_blank">
+        {/* Assuming reactLogo is defined somewhere or imported */}
+        {/* <a href="https://react.dev" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        </a> */}
       </div>
       <h1>Vite + React</h1>
       <div className="card">
@@ -28,8 +58,14 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      {/* Render the APIForm component here and pass the required props */}
+      <APIForm
+        inputs={inputs}
+        handleChange={handleChange}
+        onSubmit={submitForm}
+      />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
