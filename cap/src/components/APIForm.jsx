@@ -30,7 +30,6 @@ const APIForm = ({inputs, handleChange, onSubmit, inputsInfo}) => {
     );
 };
 
-// Define default inputsInfo outside the component
 APIForm.defaultProps = {
     inputsInfo: [
         "Input a link to any website you would like to take a screenshot of. Do not include https or any protocol in the URL",
