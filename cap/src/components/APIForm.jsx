@@ -3,29 +3,30 @@ const APIForm = ({inputs, handleChange, onSubmit, inputsInfo}) => {
     return (
         <div>
             <h2> Select Your Image Attributes: </h2>
-            <form className="form-container" onSubmit={onSubmit}> {/* Moved onSubmit to the form */}
+            <form className="form-container">
                 {inputs &&
                     Object.entries(inputs).map(([category, value], index) => (
-                        <li className="form" key={index}>
-                            <h2>{category}</h2>
-                            <input
-                                type="text"
-                                name={category}
-                                value={value}
-                                placeholder="Input this attribute..."
-                                onChange={handleChange}
-                                className="textbox"
-                            />
-                            <br></br>
-                            <br></br>
-                            <p> {inputsInfo[index] || ''}</p> {/* Safe access to inputsInfo */}
-                        </li>
-                    ))
-                }
-                <button type="submit" className="button">
+                    <li className="form" key={index}>
+                        <h2>{category} </h2>
+                        <input
+                        type="text"
+                        name={category}
+                        value={value}
+                        placeholder="Input this attribute..."
+                        onChange={handleChange}
+                        className="textbox"
+                        />
+                        <br></br>
+                        <br></br>
+                        <p> {inputsInfo[index]}</p>
+                    </li>
+                    ))}
+
+                    </form>
+                    <button type="submit" className="button" onClick={onSubmit}>
                     Take that Pic! 🎞
-                </button>
-            </form>
+                    </button>
+
         </div>
     );
 };
