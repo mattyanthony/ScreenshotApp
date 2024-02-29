@@ -1,6 +1,6 @@
 # ScreenshotApp
 
-react application, open using npm run dev
+react.js application, open using npm run dev
 
 Enter website url to take a screenshot of it from the application using APIFlash's Screenshot API, based on Google Chrome and AWS Lambda.
 
