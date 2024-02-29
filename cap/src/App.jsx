@@ -88,18 +88,57 @@ function App() {
 
   return (
     <>
+      <div className="whole-page">
+        <h1>Build Your Own Screenshot!</h1>
+        
+        <APIForm
+          inputs={inputs}
+          handleChange={(e) => {
+            setInputs((prevState) => ({
+              ...prevState,
+              [e.target.name]: e.target.value.trim(),
+            }));
+          }}
+          onSubmit={submitForm}
+        />
+        
+        <br/><br/>
+        
+        {currentImage ? (
+          <img
+            className="screenshot"
+            src={currentImage}
+            alt="Screenshot returned"
+          />
+        ) : (
+          <div></div>
+        )}
 
-      <h1>Build your own screenshot!</h1>
-      <div className="card">
+      <div className="container">
+        <h3> Current Query Status: </h3>
+        <p>
+          https://api.apiflash.com/v1/urltoimage?access_key=ACCESS_KEY    
+          <br></br>
+          &url={inputs.url} <br></br>
+          &format={inputs.format} <br></br>
+          &width={inputs.width}
+          <br></br>
+          &height={inputs.height}
+          <br></br>
+          &no_cookie_banners={inputs.no_cookie_banners}
+          <br></br>
+          &no_ads={inputs.no_ads}
+          <br></br>
+        </p>
       </div>
-      {/* Render the APIForm component here and pass the required props */}
-      <APIForm
-        inputs={inputs}
-        handleChange={handleChange}
-        onSubmit={submitForm}
-      />
+
+      <br></br>
+      </div>
     </>
   );
+  
+  
+  
 }
 
 export default App;
