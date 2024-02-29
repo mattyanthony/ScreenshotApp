@@ -7,6 +7,9 @@ const ACCESS_KEY = import.meta.env.VITE_APP_ACCESS_KEY;
 
 function App() {
   const [count, setCount] = useState(0);
+
+  const [currentImage, setCurrentImage] = useState(null);
+
   const [inputs, setInputs] = useState({
     url: "",
     format: "",
@@ -55,7 +58,32 @@ function App() {
     let fullURL = url_starter + inputs.url;
 
     let query = `https://api.apiflash.com/v1/urltoimage?access_key=${ACCESS_KEY}&url=${fullURL}&format=${inputs.format}&width=${inputs.width}&height=${inputs.height}&no_cookie_banners=${inputs.no_cookie_banners}&no_ads=${inputs.no_ads}&wait_until=${wait_until}&response_type=${response_type}&fail_on_status=${fail_on_status}`;
+    callAPI(query).catch(console.error);
+  }
 
+  const callAPI = async (query) => {
+    const response = await fetch(query);
+    const json = await response.json();
+    console.log(json)
+
+    if (json.url == null) {
+      alert("Oops! Something went wrong with that query, let's try again!")
+        }
+    else {
+      setCurrentImage(json.url);
+      reset();
+    }
+  }
+
+  const reset = () => {
+    setInputs({
+      url: "",
+      format: "",
+      no_ads: "",
+      no_cookie_banners: "",
+      width: "",
+      height: "",
+    });
   }
 
   return (
