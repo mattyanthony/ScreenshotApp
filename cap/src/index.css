@@ -11,6 +11,10 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background-image:url('assets/windows_background.png');
+  background-size: 35%;
+  background-blend-mode: multiply;
 }
 
 a {
@@ -65,4 +69,5 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+  
 }

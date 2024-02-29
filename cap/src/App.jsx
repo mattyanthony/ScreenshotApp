@@ -93,7 +93,7 @@ function App() {
   return (
     <>
       <div className="whole-page">
-        <h1>Build Your Own Screenshot!</h1>
+        <h1>Screenshot Gallery Builder</h1>
         
         <APIForm
           inputs={inputs}
@@ -123,15 +123,15 @@ function App() {
         <p>
           https://api.apiflash.com/v1/urltoimage?access_key=ACCESS_KEY    
           <br></br>
-          &url={inputs.url} <br></br>
-          &format={inputs.format} <br></br>
-          &width={inputs.width}
+          url={inputs.url} <br></br>
+          format={inputs.format} <br></br>
+          width={inputs.width}
           <br></br>
-          &height={inputs.height}
+          height={inputs.height}
           <br></br>
-          &no_cookie_banners={inputs.no_cookie_banners}
+          no_cookie_banners={inputs.no_cookie_banners}
           <br></br>
-          &no_ads={inputs.no_ads}
+          no_ads={inputs.no_ads}
           <br></br>
         </p>
       </div>
